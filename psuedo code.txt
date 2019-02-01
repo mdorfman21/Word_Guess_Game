@@ -1,0 +1,16 @@
+Computer picks a word
+	-have an array of words
+	-the computer picks a word that is from that array
+	-print the same amount of underscores as there are letters in the word
+
+Player guessing
+	-player presses a key to guess a letter
+	-computer checks to see if the letters match any in the word
+	-if the letter matches, fill in the correct underscore
+	-player wins when all of the letters of the word are filled
+	-everytime a player guess, it subtracts from allotted guesses
+	-shows letters that were already guessed
+	-after guessing all letters or running out of guesses, automatically pick new word
+
+Display wins
+	
