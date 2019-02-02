@@ -21,6 +21,19 @@ var wrongGuessedText = document.getElementById("wrong-guessed");
 var rightGuessedText = document.getElementById("right-guessed");
 
 function newGame() {
+  //initialize variables
+  var guess = null;
+  var numberOfGuesses = 10;
+  var checkAnswer = null;
+  var answerArray = [];
+  var rightGuessArray = [];
+  var wrongGuessArray = [];
+
+  numberOfGuessesText.textContent =
+    "Wrong Guesses Remaining:" + numberOfGuesses;
+  wrongGuessedText.textContent = wrongGuessArray;
+  rightGuessedText.textContent = rightGuessArray;
+
   //picking a word out of the array
   var computerPickedWord =
     wordsArray[Math.floor(Math.random() * wordsArray.length)];
@@ -30,12 +43,14 @@ function newGame() {
     answerArray[i] = " _";
   }
 
+  answerArrayText.textContent = answerArray.join(" ");
   //Getting the user's guess
   document.onkeyup = function(event) {
     var guess = event.key.toLowerCase();
     console.log(guess);
 
     //Checking if the guess is in the word
+
     if (computerPickedWord.toLowerCase().indexOf(guess) > -1) {
       //if correct guess, add to the correct guess array
       rightGuessArray.push(guess);
@@ -51,10 +66,11 @@ function newGame() {
         "Wrong Guesses Remaining:" + numberOfGuesses;
     }
     //if you get to 0 guesses, you get an alert and you also go up a loss
-    if ((numberOfGuesses = 0)) {
+    if (numberOfGuesses == 0) {
       alert("You lose!");
       losses = losses + 1;
-      lossesText.textContent = "Losses:" + losses;
+      lossesText.textContent = "Losses: " + losses;
+
       newGame();
     }
 
@@ -69,7 +85,8 @@ function newGame() {
     if (checkAnswer == computerPickedWord) {
       alert("You win");
       wins = wins + 1;
-      winsText.textContent = "Wins:" + wins;
+      winsText.textContent = "Wins: " + wins;
+
       newGame();
     }
   };
