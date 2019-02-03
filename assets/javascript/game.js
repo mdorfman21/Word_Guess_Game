@@ -1,6 +1,5 @@
 //array of 90's terms and setting wins and losses to 0
 var wordsArray = [
-  "booyah",
   "fresh",
   "howdy",
   "slater",
