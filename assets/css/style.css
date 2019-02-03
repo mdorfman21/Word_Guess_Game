@@ -1,0 +1,18 @@
+p {
+  font-size: 30px;
+  color: sienna;
+  font-weight: bolder;
+}
+
+h1 {
+  background-color: aquamarine;
+  color: blue;
+  border: 2px solid teal;
+}
+/* body {
+  background-image: url(https://i.imgur.com/nWyAxRR.jpg?fb);
+} */
+
+body {
+  background-image: url(http://i.imgur.com/CFjU41M.jpg);
+}

@@ -1,5 +1,16 @@
 //array of 90's terms and setting wins and losses to 0
-var wordsArray = ["savor", "fresh", "howdy", "slater"];
+var wordsArray = [
+  "booyah",
+  "fresh",
+  "howdy",
+  "slater",
+  "bangin",
+  "dip",
+  "crunk",
+  "phat",
+  "stylin",
+  "kapowski"
+];
 
 var answerArray = [];
 var rightGuessArray = [];
@@ -31,12 +42,13 @@ function newGame() {
 
   numberOfGuessesText.textContent =
     "Wrong Guesses Remaining:" + numberOfGuesses;
-  wrongGuessedText.textContent = wrongGuessArray;
-  rightGuessedText.textContent = rightGuessArray;
+  wrongGuessedText.textContent = "Wrong Guesses:  " + wrongGuessArray;
+  rightGuessedText.textContent = "Correct Guesses:  " + rightGuessArray;
 
   //picking a word out of the array
   var computerPickedWord =
     wordsArray[Math.floor(Math.random() * wordsArray.length)];
+  console.log(computerPickedWord);
 
   //print the underscores
   for (var i = 0; i < computerPickedWord.length; i++) {
@@ -50,20 +62,26 @@ function newGame() {
     console.log(guess);
 
     //Checking if the guess is in the word
-
     if (computerPickedWord.toLowerCase().indexOf(guess) > -1) {
       //if correct guess, add to the correct guess array
-      rightGuessArray.push(guess);
-      rightGuessedText.textContent = rightGuessArray;
+
+      rightGuessedText.textContent = "Correct Guesses:  " + rightGuessArray;
+      if (rightGuessArray.indexOf(guess) == -1) {
+        rightGuessArray.push(guess);
+        rightGuessedText.textContent = "Correct Guesses:  " + rightGuessArray;
+      }
     } else {
       //if the wrong guess add to the wrong guesses array
-      wrongGuessArray.push(guess);
-      wrongGuessedText.textContent = wrongGuessArray;
+      wrongGuessedText.textContent = "Wrong Guesses:  " + wrongGuessArray;
+      if (wrongGuessArray.indexOf(guess) == -1) {
+        wrongGuessArray.push(guess);
+        wrongGuessedText.textContent = "Wrong Guesses:  " + wrongGuessArray;
 
-      //if it's a wrong guess, take away a number of guesses remaning
-      numberOfGuesses = numberOfGuesses - 1;
-      numberOfGuessesText.textContent =
-        "Wrong Guesses Remaining:" + numberOfGuesses;
+        //if it's a wrong guess, take away a number of guesses remaning
+        numberOfGuesses = numberOfGuesses - 1;
+        numberOfGuessesText.textContent =
+          "Wrong Guesses Remaining:  " + numberOfGuesses;
+      }
     }
     //if you get to 0 guesses, you get an alert and you also go up a loss
     if (numberOfGuesses == 0) {
@@ -94,7 +112,8 @@ function newGame() {
 
 newGame();
 //Starting the game with the correct wins and losses and guesses remaining
-answerArrayText.textContent = answerArray.join(" ");
-numberOfGuessesText.textContent = "Wrong Guesses Remaining:" + numberOfGuesses;
-winsText.textContent = "Wins:" + wins;
-lossesText.textContent = "Losses:" + losses;
+
+numberOfGuessesText.textContent =
+  "Wrong Guesses Remaining:  " + numberOfGuesses;
+winsText.textContent = "Wins: " + wins;
+lossesText.textContent = "Losses: " + losses;
